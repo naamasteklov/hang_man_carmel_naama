@@ -13,6 +13,7 @@ namespace hang_man_carmel_naama
     public partial class Form1 : Form
     {
         private int m_CurrentLabelLetter = 1;
+        private string m_WordToGuess = "";
         public Form1()
         {
             InitializeComponent();
@@ -38,39 +39,51 @@ namespace hang_man_carmel_naama
         private void button_Letter_Click(object sender, EventArgs e)
         {
             string buttonText = (sender as Button).Text;
-            switch (m_CurrentLabelLetter)
-            {
-                case 1:
-                    {
-                        label1.Text = buttonText;
-                        break;
-                    }
-                case 2:
-                    {
-                        label2.Text = buttonText;
-                        break;
-                    }
-
-                case 3:
-                    {
-                        label3.Text = buttonText;
-                        break;
-                    }
-                case 4:
-                    {
-                        label4.Text = buttonText;
-                        break;
-                    }
-                case 5:
-                    {
-                        label5.Text = buttonText;
-                        break;
-                    }
-               
-
-
-            }
+            groupBox2.Controls["label" + m_CurrentLabelLetter].Text = buttonText;
             m_CurrentLabelLetter++;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            if (m_CurrentLabelLetter > 1)
+            {
+                groupBox2.Controls["label" + (m_CurrentLabelLetter - 1)].Text = "_";
+                m_CurrentLabelLetter--;
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            Label curLabel;
+            for (int i = 1; i <= 5; i++)
+            {
+                curLabel = groupBox2.Controls["label" + i] as Label;
+                m_WordToGuess += curLabel.Text;
+                curLabel.Text = "_";
+
+                button27.Visible = false;
+                button28.Visible = false;
+            }
         }
     }
 }
