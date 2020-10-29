@@ -66,7 +66,7 @@ namespace hang_man_carmel_naama
                         label5.Text = buttonText;
                         break;
                     }
-
+               
 
 
             }
